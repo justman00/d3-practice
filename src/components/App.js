@@ -8,7 +8,7 @@ export default class App extends Component {
   componentDidMount = async () => {
     try {
       const { data } = await axios.get(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=${'YMWPXGKH8NACU5Y3'}`
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=${'YMWPXGKH8NACU5Y3'}`
       )
       console.log(data)
       this.setState({ data })
