@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Chart from './Chart'
+import { Link } from 'react-router-dom'
 
 export default class App extends Component {
   state = { data: null, query: '', currentStock: '' }
@@ -38,6 +39,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <Link to="/messages">PieChart</Link>
         <h1>App</h1>
         <p>The api is limited to 5 five calls a minute unfortunately</p>
         <form onSubmit={this.handleSubmit}>
