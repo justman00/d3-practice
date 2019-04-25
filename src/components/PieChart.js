@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import * as d3 from 'd3'
 import Slice from './Slice'
+import BarChart from './BarChart'
 
 const data = [
   {
@@ -79,6 +80,7 @@ function PieChart() {
           <Slice pie={pie} />
         </g>
       </svg>
+      <BarChart />
     </div>
   )
 }
