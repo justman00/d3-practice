@@ -5,13 +5,14 @@ function Chart({ data }) {
   const width = 650
   const height = 400
   const [chart, setChart] = React.useState([])
+  const [ln, setLn] = React.useState(null)
   const margin = { top: 20, right: 5, bottom: 20, left: 35 }
   const [fns, setFns] = React.useState({})
   const leftAxis = React.useRef(null)
   const bottomAxis = React.useRef(null)
 
-  console.log(leftAxis)
-  console.log(bottomAxis)
+  //console.log(leftAxis)
+  //console.log(bottomAxis)
 
   // axis d3 function
   const xAxis = d3.axisBottom()
@@ -34,7 +35,7 @@ function Chart({ data }) {
     const [min, max] = d3.extent(combined, d => d.high)
     const atl = d3.min(combined, d => d.low)
 
-    console.log(atl, min)
+    // console.log(atl, min)
 
     // scales
     const x = d3
@@ -48,6 +49,16 @@ function Chart({ data }) {
       .range([height - margin.bottom, margin.top])
 
     // almost spitting out all the d3 data
+    const line = d3
+      .line()
+      .x(d => x(new Date(d.date)))
+      .y(d => y(d.close))
+      .curve(d3.curveCatmullRom)
+
+    console.log(line)
+
+    setLn(line(combined))
+
     const res = combined.map(val => ({
       x: x(new Date(val.date)),
       y: y(val.close),
@@ -67,7 +78,8 @@ function Chart({ data }) {
 
   return (
     <svg width={width} height={height}>
-      {chart.map((d, i) => (
+      {ln && <path d={ln} stroke="blue" fill="none" />}
+      {/* {chart.map((d, i) => (
         <rect
           key={i}
           width={3}
@@ -76,7 +88,8 @@ function Chart({ data }) {
           y={d.y}
           height={d.height}
         />
-      ))}
+      ))} */}
+
       <g
         ref={bottomAxis}
         transform={`translate(0, ${height - margin.bottom})`}
