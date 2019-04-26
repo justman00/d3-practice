@@ -16,7 +16,7 @@ export default class App extends Component {
       const { data } = await axios.get(
         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${
           this.state.query
-        }&apikey=${'YMWPXGKH8NACU5Y3'}`
+        }&apikey=${process.env.REACT_APP_API_KEY}`
       )
       this.setState({ data, currentStock: this.state.query, query: '' })
     } catch (error) {
