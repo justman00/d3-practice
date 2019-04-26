@@ -4,9 +4,9 @@ import * as d3 from 'd3'
 function Chart({ data }) {
   const width = 650
   const height = 400
+  const margin = { top: 20, right: 5, bottom: 20, left: 35 }
   const [chart, setChart] = React.useState([])
   const [ln, setLn] = React.useState(null)
-  const margin = { top: 20, right: 5, bottom: 20, left: 35 }
   const [fns, setFns] = React.useState({})
   const leftAxis = React.useRef(null)
   const bottomAxis = React.useRef(null)

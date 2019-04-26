@@ -6,18 +6,6 @@ import { Link } from 'react-router-dom'
 export default class App extends Component {
   state = { data: null, query: '', currentStock: '' }
 
-  componentDidMount = async () => {
-    // try {
-    //   const { data } = await axios.get(
-    //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=${'YMWPXGKH8NACU5Y3'}`
-    //   )
-    //   console.log(data)
-    //   this.setState({ data })
-    // } catch (error) {
-    //   console.error(error)
-    // }
-  }
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -40,6 +28,9 @@ export default class App extends Component {
     return (
       <div>
         <Link to="/messages">PieChart</Link>
+        <Link style={{ display: 'block' }} to="/animated">
+          Animated
+        </Link>
         <h1>App</h1>
         <p>The api is limited to 5 five calls a minute unfortunately</p>
         <form onSubmit={this.handleSubmit}>

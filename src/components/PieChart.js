@@ -66,6 +66,9 @@ function PieChart() {
   return (
     <div>
       <Link to="/">Stock Analysis</Link>
+      <Link style={{ display: 'block' }} to="/animated">
+        Animated
+      </Link>
       <h1>PieChart</h1>
       <div>
         <div style={{ width: '25px', height: '25px', background: '#DC143C' }} />
